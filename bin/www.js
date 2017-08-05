@@ -7,6 +7,7 @@
 const app = require('../app');
 const debug = require('debug')('canvas-consumer:server');
 const http = require('http');
+const helper = require('../helper');
 
 /**
  * Get port from environment and store in Express.
@@ -88,3 +89,12 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
+
+helper.database.initialize()
+    .then(() => {
+        server.listen(port);
+        console.info('API Server started!');
+    }).catch((e) => {
+    console.error('API Server could not started!');
+    console.log(e);
+});
