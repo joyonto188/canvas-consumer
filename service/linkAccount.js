@@ -13,7 +13,7 @@ module.exports = {
                         message: message.token_already_used
                     };
                 }
-                return saveToken(token);
+                return tokenHelper.saveToken(token);
             });
     }
 };

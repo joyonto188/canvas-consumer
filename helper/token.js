@@ -13,7 +13,7 @@ let getToken = (token) => {
                 if (err) {
                     return reject(err);
                 }
-                return resolve(!!foundToken);
+                return foundToken ? resolve(foundToken) : resolve(false);
             });
     })
 };
@@ -52,8 +52,14 @@ let importCourses = (token) => {
                 'bearer': token
             }
         }, function (error, response, body) {
-            if (error || response.statusCode === 401) {
-                return reject(error || 'Unauthorized');
+            if (error) {
+                return reject(error);
+            }
+            if (response.statusCode === 401) {
+                return resolve({
+                    success: false,
+                    message: 'Unauthorized'
+                });
             }
             resolve(body);
         });

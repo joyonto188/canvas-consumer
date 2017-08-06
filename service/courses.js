@@ -5,9 +5,7 @@ const message = config.message;
 
 module.exports = {
     getCourses: (token) => {
-        return tokenHelper.getToken({
-            token: token
-        })
+        return tokenHelper.getToken(token)
             .then(foundToken => {
                 if (foundToken) {
                     return {

@@ -14,14 +14,14 @@ let importCourses = (request, response) => {
     const token = request.body;
 
     if (_.isEmpty(token)) {
-        responseHelper.failure(response, {
+        return responseHelper.internalServerError(response, {
             message: message.token_not_provided
         });
     }
     importService.import(token.token)
         .then((importStatus) => {
             if (!importStatus.success) {
-                return responseHelper.failure(response, {
+                return responseHelper.internalServerError(response, {
                     message: importStatus.message
                 });
             }
