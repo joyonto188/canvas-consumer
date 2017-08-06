@@ -15,7 +15,7 @@ let success = (response, data) => {
     response.status(200).json(successResponse);
 };
 
-let failure = (response, err) => {
+let internalServerError = (response, err) => {
     let message = [
         'Error in handling this request. ',
         'Please contact system admin.'
@@ -37,5 +37,5 @@ let failure = (response, err) => {
 
 module.exports = {
     success: success,
-    failure: failure
+    internalServerError: internalServerError
 };
