@@ -94,7 +94,9 @@ helper.database.initialize()
     .then(() => {
         server.listen(port);
         console.info('API Server started!');
-    }).catch((e) => {
-    console.error('API Server could not started!');
-    console.log(e);
-});
+    })
+    .catch((e) => {
+        console.error('API Server could not started!');
+        console.log(e);
+        process.exit(1)
+    });

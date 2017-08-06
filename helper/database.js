@@ -14,9 +14,6 @@ let initializeDatabase = () => {
             console.log("Successfully connected with database!");
             module.exports.dbClient = dbClient;
         })
-        .catch((e) => {
-            console.log(e);
-        });
 };
 
 module.exports = {
