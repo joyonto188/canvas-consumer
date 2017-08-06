@@ -1,5 +1,7 @@
 const databaseConfig = require('./database');
+const message = require('./message');
 
 module.exports = {
-    databaseSettings: databaseConfig
+    databaseSettings: databaseConfig,
+    message: message
 };
