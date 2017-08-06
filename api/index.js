@@ -1,16 +1,13 @@
-const helper = require('../helper');
-const responseHelper = helper.response;
+const linkAccountApi = require('./linkAccount');
+const importApi = require('./import');
+const coursesApi = require('./courses');
+
+let init = (app) => {
+    linkAccountApi.init(app);
+    importApi.init(app);
+    coursesApi.init(app);
+};
 
 module.exports = {
-    linkAccount: (request, response) => {
-        responseHelper.success(response, 'link-account is under development');
-    },
-
-    import: (request, response) => {
-        responseHelper.success(response, 'import is under development');
-    },
-
-    courses: (request, response) => {
-        responseHelper.success(response, 'courses is under development');
-    }
+    init: init
 };
