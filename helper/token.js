@@ -6,24 +6,22 @@ const canvasUrl = 'http://canvas.differ.chat/api/v1/users/self/courses?access_to
 
 let getToken = (token) => {
     return new promise(function (resolve, reject) {
-        dbHelper.dbClient.collection(tokenCollection).findOne(token, {}, function (err, foundToken) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                if (foundToken) {
-                    resolve(foundToken);
+        dbHelper.dbClient.collection(tokenCollection).findOne(
+            {
+                token: token
+            }, {}, function (err, foundToken) {
+                if (err) {
+                    return reject(err);
                 }
-                else {
-                    resolve(false);
-                }
-            }
-        });
+                return resolve(!!foundToken);
+            });
     })
 };
 
 let saveToken = (token) => {
-    return dbHelper.dbClient.collection(tokenCollection).insert(token)
+    return dbHelper.dbClient.collection(tokenCollection).insert({
+        token: token
+    })
         .then(() => {
             return {
                 success: true
@@ -51,19 +49,17 @@ let importCourses = (token) => {
     return new promise(function (resolve, reject) {
         request.get(canvasUrl, {
             'auth': {
-                'bearer': token.token
+                'bearer': token
             }
         }, function (error, response, body) {
             if (error || response.statusCode === 401) {
-                reject(error || 'Unauthorized');
+                return reject(error || 'Unauthorized');
             }
-            else {
-                resolve(body);
-            }
+            resolve(body);
         });
     })
         .then(courses => {
-            return updateTokenWithCourses(token.token, courses);
+            return updateTokenWithCourses(token, courses);
         });
 };
 
