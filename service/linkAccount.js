@@ -6,24 +6,27 @@ const tokenCollection = 'token';
 
 let isTokenAlreadyUsed = (token) => {
     return new promise(function (resolve, reject) {
-        dbHelper.dbClient.collection(tokenCollection).findOne(token, {}, function (err, match) {
-            if (err) {
-                reject(err);
-            }
-            else {
+        dbHelper.dbClient.collection(tokenCollection).findOne(
+            {
+                token: token
+            }, {}, function (err, match) {
+                if (err) {
+                    return reject(err);
+                }
                 if (match) {
                     resolve(true);
                 }
                 else {
                     resolve(false);
                 }
-            }
-        });
+            });
     })
 };
 
 let saveToken = (token) => {
-    return dbHelper.dbClient.collection(tokenCollection).insert(token)
+    return dbHelper.dbClient.collection(tokenCollection).insert({
+        token: token
+    })
         .then(() => {
             return {
                 success: true
@@ -41,9 +44,7 @@ module.exports = {
                         message: message.token_already_used
                     };
                 }
-                else {
-                    return saveToken(token);
-                }
+                return saveToken(token);
             });
     }
 };
