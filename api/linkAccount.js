@@ -3,6 +3,7 @@ const message = config.message;
 const helper = require('../helper');
 const responseHelper = helper.response;
 const service = require('../service');
+const linkAccountService = service.linkAccount;
 const _ = require('lodash');
 
 let init = (app) => {
@@ -17,7 +18,7 @@ let linkAccount = (request, response) => {
             message: message.token_not_provided
         });
     }
-    service.linkAccount.link(token.token)
+    linkAccountService.link(token.token)
         .then((linkedStatus) => {
             if (!linkedStatus.success) {
                 return responseHelper.internalServerError(response, {
