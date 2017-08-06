@@ -13,12 +13,7 @@ let isTokenAlreadyUsed = (token) => {
                 if (err) {
                     return reject(err);
                 }
-                if (match) {
-                    resolve(true);
-                }
-                else {
-                    resolve(false);
-                }
+                return resolve(!!match);
             });
     })
 };
