@@ -13,12 +13,10 @@ module.exports = {
                         courses: foundToken.courses || {}
                     }
                 }
-                else {
-                    return {
-                        success: false,
-                        message: message.token_not_found
-                    };
-                }
+                return {
+                    success: false,
+                    message: message.token_not_found
+                };
             });
     }
 };
