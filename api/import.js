@@ -11,14 +11,14 @@ let init = (app) => {
 };
 
 let importCourses = (request, response) => {
-    const token = request.body;
+    const token = request.body.token;
 
     if (_.isEmpty(token)) {
         responseHelper.failure(response, {
             message: message.token_not_provided
         });
     }
-    importService.import(token.token)
+    importService.import(token)
         .then((importStatus) => {
             if (!importStatus.success) {
                 return responseHelper.failure(response, {
