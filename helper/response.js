@@ -16,10 +16,7 @@ let success = (response, data) => {
 };
 
 let internalServerError = (response, err) => {
-    let message = [
-        'Error in handling this request. ',
-        'Please contact system admin.'
-    ].join('');
+    let message = `Error in handling this request. Please contact system admin.`;
     let status = 500;
 
     if (typeof err === 'object' && err.status) {

@@ -11,14 +11,14 @@ let init = (app) => {
 };
 
 let linkAccount = (request, response) => {
-    const token = request.body;
+    const token = request.body.token;
 
     if (_.isEmpty(token)) {
         return responseHelper.internalServerError(response, {
             message: message.token_not_provided
         });
     }
-    linkAccountService.link(token.token)
+    linkAccountService.link(token)
         .then((linkedStatus) => {
             if (!linkedStatus.success) {
                 return responseHelper.internalServerError(response, {
