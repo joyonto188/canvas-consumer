@@ -5,5 +5,6 @@ const settings = require('./settings');
 module.exports = {
     settings: settings,
     databaseSettings: databaseConfig,
-    message: message
+    message: message,
+    settings: settings
 };

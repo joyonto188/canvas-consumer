@@ -11,7 +11,7 @@ let init = (app) => {
 };
 
 let linkAccount = (request, response) => {
-    const token = request.body.token;
+    const {token} = request.body;
 
     if (_.isEmpty(token)) {
         return responseHelper.internalServerError(response, {
