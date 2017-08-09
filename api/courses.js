@@ -11,7 +11,7 @@ let init = (app) => {
 };
 
 let getCourses = (request, response) => {
-    const token = request.query.token;
+    const {token} = request.query;
 
     if (_.isNil(token)) {
         return responseHelper.internalServerError(response, {

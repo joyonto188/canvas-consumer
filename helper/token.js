@@ -2,7 +2,6 @@ const promise = require('bluebird');
 const dbHelper = require('../helper/database');
 const request = require('request');
 const tokenCollection = 'token';
-const canvasUrl = 'http://canvas.differ.chat/api/v1/users/36/courses?access_token=';
 
 let getToken = (token) => {
     return new promise(function (resolve, reject) {
