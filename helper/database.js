@@ -13,7 +13,7 @@ let initializeDatabase = () => {
         .then((dbClient) => {
             console.log("Successfully connected with database!");
             module.exports.dbClient = dbClient;
-        })
+        });
 };
 
 module.exports = {
