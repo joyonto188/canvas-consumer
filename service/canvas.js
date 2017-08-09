@@ -17,8 +17,5 @@ module.exports = {
                 resolve(body);
             });
         });
-        /*.then(courses => {
-            return updateTokenWithCourses(token, courses);
-        });*/
     }
 };
