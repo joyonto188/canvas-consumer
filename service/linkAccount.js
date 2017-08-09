@@ -1,11 +1,11 @@
-const promise = require('bluebird');
+const Promise = require('bluebird');
 const dbHelper = require('../helper/database');
 const config = require('../config');
 const message = config.message;
 const tokenCollection = 'token';
 
 let isTokenAlreadyUsed = (token) => {
-    return new promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         dbHelper
             .dbClient
             .collection(tokenCollection)
