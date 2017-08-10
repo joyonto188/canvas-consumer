@@ -1,5 +1,9 @@
 const linkAccountService = require('./linkAccount');
+const importService = require('./import');
+const canvasService = require('./canvas');
 
 module.exports = {
-    linkAccount: linkAccountService
-}
+    linkAccount: linkAccountService,
+    import: importService,
+    canvas: canvasService
+};

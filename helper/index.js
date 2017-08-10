@@ -1,7 +1,9 @@
 const responseHelper = require('./response');
-const database = require('./database');
+const databaseHelper = require('./database');
+const tokenHelper = require('./token');
 
 module.exports = {
     response: responseHelper,
-    database: database
+    database: databaseHelper,
+    token: tokenHelper
 };
