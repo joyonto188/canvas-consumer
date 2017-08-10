@@ -14,7 +14,7 @@ let importCourses = (request, response) => {
     const {token} = request.body;
 
     if (_.isEmpty(token)) {
-        return responseHelper.failure(response, {
+        return responseHelper.internalServerError(response, {
             message: message.token_not_provided
         });
     }

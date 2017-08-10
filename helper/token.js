@@ -15,7 +15,7 @@ let getToken = (token) => {
                     if (err) {
                         return reject(err);
                     }
-                    return resolve(!!foundToken);
+                    return foundToken ? resolve(foundToken) : resolve(false);
                 });
     })
 };
