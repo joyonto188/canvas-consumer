@@ -3,6 +3,7 @@ const message = require('./message');
 const settings = require('./settings');
 
 module.exports = {
+    settings: settings,
     databaseSettings: databaseConfig,
     message: message,
     settings: settings

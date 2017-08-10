@@ -17,7 +17,15 @@ let getToken = (token) => {
                     }
                     return foundToken ? resolve(foundToken) : resolve(false);
                 });
-    })
+    });
+};
+
+let getTokens = (query) => {
+    return dbHelper
+        .dbClient
+        .collection(tokenCollection)
+        .find(query)
+        .toArray();
 };
 
 let saveToken = (token) => {
@@ -55,6 +63,7 @@ let updateTokenWithCourses = (token, courses) => {
 
 module.exports = {
     getToken: getToken,
+    getTokens: getTokens,
     saveToken: saveToken,
     updateTokenWithCourses: updateTokenWithCourses
 };
