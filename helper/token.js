@@ -1,10 +1,10 @@
-const promise = require('bluebird');
+const Promise = require('bluebird');
 const dbHelper = require('../helper/database');
 const request = require('request');
 const tokenCollection = 'token';
 
 let getToken = (token) => {
-    return new promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
         dbHelper
             .dbClient
             .collection(tokenCollection)
